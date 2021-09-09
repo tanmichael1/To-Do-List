@@ -27,7 +27,7 @@
 import React from "react";
 import "./App.css";
 
-function Todo({ todo, index, completeTodo, removeTodo }) {
+function Todo({ todo, index, completeTodo, removeTodo, editTodo }) {
   return (
     <div
       className="todo"
@@ -37,6 +37,7 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
       <div>
         <button onClick={() => completeTodo(index)}>Complete</button>
         <button onClick={() => removeTodo(index)}>x</button>
+        <button onClick={() => editTodo(index)}>Edit</button>
       </div>
     </div>
   );
@@ -60,6 +61,7 @@ function TodoForm({ addTodo }) {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
+      <button type="submit">Submit </button>
     </form>
   );
 }
@@ -97,6 +99,15 @@ function App() {
     setTodos(newTodos);
   };
 
+  const editTodo = (index) => {
+    const newTodos = [...todos];
+    let newMessage = prompt("What do you want to change the text to?");
+    if (newMessage) {
+      newTodos[index].text = newMessage;
+      setTodos(newTodos);
+    }
+  };
+
   return (
     <div className="app">
       <div className="todo-list">
@@ -107,6 +118,7 @@ function App() {
             todo={todo}
             completeTodo={completeTodo}
             removeTodo={removeTodo}
+            editTodo={editTodo}
           />
         ))}
         <TodoForm addTodo={addTodo} />
