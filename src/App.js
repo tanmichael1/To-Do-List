@@ -35,7 +35,14 @@ function Todo({ todo, index, completeTodo, removeTodo, editTodo }) {
     >
       {todo.text}
       <div>
-        <button onClick={() => completeTodo(index)}>Complete</button>
+        {todo.isCompleted ? (
+          <button onClick={() => completeTodo(index)}>
+            Mark as Incomplete
+          </button>
+        ) : (
+          <button onClick={() => completeTodo(index)}>Mark as Complete</button>
+        )}
+
         <button onClick={() => removeTodo(index)}>x</button>
         <button onClick={() => editTodo(index)}>Edit</button>
       </div>
@@ -89,7 +96,8 @@ function App() {
 
   const completeTodo = (index) => {
     const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
+
+    newTodos[index].isCompleted = !newTodos[index].isCompleted;
     setTodos(newTodos);
   };
 
