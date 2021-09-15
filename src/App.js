@@ -27,7 +27,14 @@
 import React from "react";
 import "./App.css";
 
-function Todo({ todo, index, completeTodo, removeTodo, editTodo }) {
+function Todo({
+  todo,
+  index,
+  completeTodo,
+  incompleteTodo,
+  removeTodo,
+  editTodo,
+}) {
   return (
     <div
       className="todo"
@@ -36,7 +43,7 @@ function Todo({ todo, index, completeTodo, removeTodo, editTodo }) {
       {todo.text}
       <div>
         {todo.isCompleted ? (
-          <button onClick={() => completeTodo(index)}>
+          <button onClick={() => incompleteTodo(index)}>
             Mark as Incomplete
           </button>
         ) : (
@@ -96,9 +103,21 @@ function App() {
 
   const completeTodo = (index) => {
     const newTodos = [...todos];
+    newTodos[index].isCompleted = true;
+    console.log(newTodos[index].isCompleted);
 
-    newTodos[index].isCompleted = !newTodos[index].isCompleted;
     setTodos(newTodos);
+    console.log(newTodos);
+    console.log(newTodos.filter((todo) => todo.completed).length);
+  };
+
+  const incompleteTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = false;
+    console.log(newTodos[index].isCompleted);
+    setTodos(newTodos);
+    console.log(newTodos);
+    console.log(newTodos.filter((todo) => !todo.completed).length);
   };
 
   const removeTodo = (index) => {
@@ -116,8 +135,18 @@ function App() {
     }
   };
 
+  // Toggle completed state of todo item
+  const markComplete = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
   return (
     <div className="app">
+      <h1>To-do List</h1>
       <div className="todo-list">
         {todos.map((todo, index) => (
           <Todo
@@ -125,11 +154,20 @@ function App() {
             index={index}
             todo={todo}
             completeTodo={completeTodo}
+            incompleteTodo={incompleteTodo}
+            // markComplete={markComplete}
             removeTodo={removeTodo}
             editTodo={editTodo}
           />
         ))}
         <TodoForm addTodo={addTodo} />
+        <div>Total Tasks: {todos.length} </div>
+        <div>
+          Active Tasks: {todos.filter((todo) => !todo.completed).length}
+        </div>
+        <div>
+          Completed Tasks: {todos.filter((todo) => todo.completed).length}{" "}
+        </div>
       </div>
     </div>
   );
