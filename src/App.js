@@ -163,10 +163,10 @@ function App() {
         <TodoForm addTodo={addTodo} />
         <div>Total Tasks: {todos.length} </div>
         <div>
-          Active Tasks: {todos.filter((todo) => !todo.completed).length}
+          Active Tasks: {todos.filter((todo) => !todo.isCompleted).length}
         </div>
         <div>
-          Completed Tasks: {todos.filter((todo) => todo.completed).length}{" "}
+          Completed Tasks: {todos.filter((todo) => todo.isCompleted).length}{" "}
         </div>
       </div>
     </div>
