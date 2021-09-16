@@ -63,6 +63,7 @@ function TodoForm({ addTodo }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value) return;
+    if (value == " ") return;
     addTodo(value);
     setValue("");
   };
@@ -81,18 +82,42 @@ function TodoForm({ addTodo }) {
 }
 
 function App() {
-  const [todos, setTodos] = React.useState([
+  const [todos, setTodos] = React.useState([]);
+
+  const [todosList, setTodosList] = React.useState([
     {
-      text: "Learn about React",
-      isCompleted: false,
+      title: "To-doList",
+      todos: [
+        {
+          text: "Learn about React",
+          isCompleted: false,
+        },
+        {
+          text: "Meet friend for lunch",
+          isCompleted: false,
+        },
+        {
+          text: "Build really cool todo app",
+          isCompleted: false,
+        },
+      ],
     },
     {
-      text: "Meet friend for lunch",
-      isCompleted: false,
-    },
-    {
-      text: "Build really cool todo app",
-      isCompleted: false,
+      title: "Other List",
+      todos: [
+        {
+          text: "Learn about React",
+          isCompleted: false,
+        },
+        {
+          text: "Meet friend for lunch",
+          isCompleted: false,
+        },
+        {
+          text: "Build really cool todo app",
+          isCompleted: false,
+        },
+      ],
     },
   ]);
 
@@ -101,15 +126,40 @@ function App() {
     setTodos(newTodos);
   };
 
-  const completeTodo = (index) => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
-    console.log(newTodos[index].isCompleted);
+  // const completeTodo = (index) => {
+  //   const newTodos = [...todos];
+  //   newTodos[index].isCompleted = true;
+  //   console.log(newTodos[index].isCompleted);
 
-    setTodos(newTodos);
-    console.log(newTodos);
-    console.log(newTodos.filter((todo) => todo.completed).length);
-  };
+  //   setTodos(newTodos);
+  //   console.log(newTodos);
+  //   console.log(newTodos.filter((todo) => todo.completed).length);
+  // };
+
+  function completeTodo(listIndex, itemIndex) {
+    // var check = todosList;
+    // console.log(listIndex);
+    // console.log(todosList[0]);
+    // const newTodos = todosList[listIndex].todos;
+    // console.log(newTodos);
+    // newTodos[itemIndex].isCompleted = true;
+    // console.log(newTodos[itemIndex].isCompleted);
+    // console.log(newTodos);
+    // check[listIndex].todos = newTodos;
+
+    // setTodos(check);
+
+    // console.log(newTodos);
+    // console.log(newTodos.filter((todo) => todo.completed).length);
+
+    const check = [...todosList];
+    console.log(listIndex);
+    console.log(todosList[0]);
+
+    check[listIndex].todos[itemIndex].isCompleted = true;
+
+    setTodos(check);
+  }
 
   const incompleteTodo = (index) => {
     const newTodos = [...todos];
@@ -135,39 +185,37 @@ function App() {
     }
   };
 
-  // Toggle completed state of todo item
-  const markComplete = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
-  };
-
   return (
     <div className="app">
       <h1>To-do List</h1>
-      <div className="todo-list">
-        {todos.map((todo, index) => (
-          <Todo
-            key={index}
-            index={index}
-            todo={todo}
-            completeTodo={completeTodo}
-            incompleteTodo={incompleteTodo}
-            // markComplete={markComplete}
-            removeTodo={removeTodo}
-            editTodo={editTodo}
-          />
+      <div className="todo-lists">
+        {todosList.map((todoitem, listIndex) => (
+          <div index={listIndex} className="todo-list">
+            <h1>{todoitem.title}</h1>
+            {todoitem.todos.map((todo, index) => (
+              <Todo
+                key={index}
+                index={index}
+                todo={todo}
+                completeTodo={() => completeTodo(listIndex, index)}
+                incompleteTodo={incompleteTodo}
+                removeTodo={removeTodo}
+                editTodo={editTodo}
+              />
+            ))}
+            <TodoForm addTodo={addTodo} />
+            <div>Total Tasks: {todoitem.todos.length} </div>
+            <div>
+              Active Tasks:{" "}
+              {todoitem.todos.filter((todo) => !todo.isCompleted).length}
+            </div>
+            <div>
+              Completed Tasks:{" "}
+              {todoitem.todos.filter((todo) => todo.isCompleted).length}{" "}
+            </div>
+            <hr />
+          </div>
         ))}
-        <TodoForm addTodo={addTodo} />
-        <div>Total Tasks: {todos.length} </div>
-        <div>
-          Active Tasks: {todos.filter((todo) => !todo.isCompleted).length}
-        </div>
-        <div>
-          Completed Tasks: {todos.filter((todo) => todo.isCompleted).length}{" "}
-        </div>
       </div>
     </div>
   );
