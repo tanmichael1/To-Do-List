@@ -57,14 +57,15 @@ function Todo({
   );
 }
 
-function TodoForm({ addTodo }) {
+function TodoForm({ addTodo, listIndex }) {
   const [value, setValue] = React.useState("");
+  var test = listIndex;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value) return;
     if (value == " ") return;
-    addTodo(value);
+    addTodo(value, test);
     setValue("");
   };
 
@@ -121,83 +122,35 @@ function App() {
     },
   ]);
 
-  const addTodo = (text) => {
-    const newTodos = [...todos, { text }];
-    setTodos(newTodos);
-  };
-
-  // const completeTodo = (index) => {
-  //   const newTodos = [...todos];
-  //   newTodos[index].isCompleted = true;
-  //   console.log(newTodos[index].isCompleted);
-
-  //   setTodos(newTodos);
-  //   console.log(newTodos);
-  //   console.log(newTodos.filter((todo) => todo.completed).length);
-  // };
-
-  // function completeTodo(listIndex, itemIndex) {
-  // var check = todosList;
-  // console.log(listIndex);
-  // console.log(todosList[0]);
-  // const newTodos = todosList[listIndex].todos;
-  // console.log(newTodos);
-  // newTodos[itemIndex].isCompleted = true;
-  // console.log(newTodos[itemIndex].isCompleted);
-  // console.log(newTodos);
-  // check[listIndex].todos = newTodos;
-
-  // setTodos(check);
-
-  // console.log(newTodos);
-  // console.log(newTodos.filter((todo) => todo.completed).length);
+  function addTodo(text, index) {
+    var newTodos = [...todosList];
+    var length = newTodos[index].todos.length;
+    newTodos[index].todos.push({ text: text, isCompleted: false });
+    setTodosList(newTodos);
+  }
 
   function completeTodo(listIndex, itemIndex) {
     const newTodos = [...todosList];
-    console.log(listIndex);
-    console.log(todosList[0]);
     newTodos[listIndex].todos[itemIndex].isCompleted = true;
     setTodos(newTodos);
   }
 
   function incompleteTodo(listIndex, itemIndex) {
     const newTodos = [...todosList];
-    console.log(listIndex);
-    console.log(todosList[0]);
     newTodos[listIndex].todos[itemIndex].isCompleted = false;
     setTodos(newTodos);
   }
 
-  // const removeTodo = (index) => {
-  //   const newTodos = [...todos];
-  //   newTodos.splice(index, 1);
-  //   setTodos(newTodos);
-
-  // };
-
   function removeTodo(listIndex, itemIndex) {
-    console.log(itemIndex);
     const newTodos = [...todosList];
     newTodos[listIndex].todos.splice(itemIndex, 1);
     setTodos(newTodos);
   }
 
-  // const editTodo = (index) => {
-  //   const newTodos = [...todos];
-  //   let newMessage = prompt("What do you want to change the text to?");
-  //   if (newMessage) {
-  //     newTodos[index].text = newMessage;
-  //     setTodos(newTodos);
-  //   }
-  // };
-
   function editTodo(listIndex, itemIndex) {
     const newTodos = [...todosList];
-
     let newMessage = prompt("What do you want to change the text to?");
     if (newMessage) {
-      console.log(newTodos[listIndex]);
-      // console.log(newTodos[listIndex].todos);
       newTodos[listIndex].todos[itemIndex].text = newMessage;
       setTodos(newTodos);
     }
@@ -221,7 +174,7 @@ function App() {
                 editTodo={() => editTodo(listIndex, index)}
               />
             ))}
-            <TodoForm addTodo={addTodo} />
+            <TodoForm listIndex={listIndex} addTodo={addTodo} />
             <div>Total Tasks: {todoitem.todos.length} </div>
             <div>
               Active Tasks:{" "}
