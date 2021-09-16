@@ -1,29 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import React from "react";
 import "./App.css";
 
@@ -83,8 +57,6 @@ function TodoForm({ addTodo, listIndex }) {
 }
 
 function App() {
-  const [todos, setTodos] = React.useState([]);
-
   const [todosList, setTodosList] = React.useState([
     {
       title: "To-doList",
@@ -132,19 +104,19 @@ function App() {
   function completeTodo(listIndex, itemIndex) {
     const newTodos = [...todosList];
     newTodos[listIndex].todos[itemIndex].isCompleted = true;
-    setTodos(newTodos);
+    setTodosList(newTodos);
   }
 
   function incompleteTodo(listIndex, itemIndex) {
     const newTodos = [...todosList];
     newTodos[listIndex].todos[itemIndex].isCompleted = false;
-    setTodos(newTodos);
+    setTodosList(newTodos);
   }
 
   function removeTodo(listIndex, itemIndex) {
     const newTodos = [...todosList];
     newTodos[listIndex].todos.splice(itemIndex, 1);
-    setTodos(newTodos);
+    setTodosList(newTodos);
   }
 
   function editTodo(listIndex, itemIndex) {
@@ -152,7 +124,16 @@ function App() {
     let newMessage = prompt("What do you want to change the text to?");
     if (newMessage) {
       newTodos[listIndex].todos[itemIndex].text = newMessage;
-      setTodos(newTodos);
+      setTodosList(newTodos);
+    }
+  }
+
+  function addList() {
+    const newTodos = [...todosList];
+    let listTitle = prompt("What would you like to call your new list?");
+    if (listTitle) {
+      newTodos.push({ title: listTitle, todos: [] });
+      setTodosList(newTodos);
     }
   }
 
@@ -187,6 +168,8 @@ function App() {
             <hr />
           </div>
         ))}
+
+        <button onClick={() => addList()}>Add List </button>
       </div>
     </div>
   );
