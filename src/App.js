@@ -137,6 +137,16 @@ function App() {
     }
   }
 
+  function editListTitle(listIndex) {
+    const newTodos = [...todosList];
+    let listTitle = prompt("What would you change the list name to?");
+    if (listTitle) {
+      newTodos[listIndex].title = listTitle;
+
+      setTodosList(newTodos);
+    }
+  }
+
   return (
     <div className="app">
       <h1>To-do List</h1>
@@ -144,6 +154,10 @@ function App() {
         {todosList.map((todoitem, listIndex) => (
           <div index={listIndex} className="todo-list">
             <h1>{todoitem.title}</h1>
+            <button onClick={() => editListTitle(listIndex)}>
+              Edit List Title{" "}
+            </button>
+            <br />
             {todoitem.todos.map((todo, index) => (
               <Todo
                 key={index}
