@@ -147,6 +147,17 @@ function App() {
     }
   }
 
+  function deleteList(listIndex) {
+    const newTodos = [...todosList];
+    let deleteConfirmation = window.confirm(
+      "Are you sure you want to remove this list of notes?"
+    );
+    if (deleteConfirmation) {
+      newTodos.splice(listIndex, 1);
+      setTodosList(newTodos);
+    }
+  }
+
   return (
     <div className="app">
       <h1>To-do List</h1>
@@ -180,6 +191,7 @@ function App() {
               {todoitem.todos.filter((todo) => todo.isCompleted).length}{" "}
             </div>
             <hr />
+            <button onClick={() => deleteList(listIndex)}>Delete List</button>
           </div>
         ))}
 
