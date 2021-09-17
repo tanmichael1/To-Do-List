@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { IoIosCheckmarkCircle } from "react-icons/fa";
 
 function Todo({
   todo,
@@ -23,11 +24,26 @@ function Todo({
             Mark as Incomplete
           </button>
         ) : (
-          <button onClick={() => completeTodo(index)}>Mark as Complete</button>
+          <button
+            style={{ color: "white", backgroundColor: "green" }}
+            onClick={() => completeTodo(index)}
+          >
+            Mark as Complete
+          </button>
         )}
 
-        <button onClick={() => removeTodo(index)}>x</button>
-        <button onClick={() => editTodo(index)}>Edit</button>
+        <button
+          style={{ color: "white", backgroundColor: "red" }}
+          onClick={() => removeTodo(index)}
+        >
+          x
+        </button>
+        <button
+          style={{ color: "white", backgroundColor: "blue" }}
+          onClick={() => editTodo(index)}
+        >
+          Edit
+        </button>
       </div>
     </div>
   );
@@ -53,7 +69,12 @@ function TodoForm({ addTodo, listIndex }) {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button type="submit">Submit </button>
+      <button
+        style={{ color: "white", backgroundColor: "green" }}
+        type="submit"
+      >
+        Submit{" "}
+      </button>
     </form>
   );
 }
@@ -165,38 +186,55 @@ function App() {
       <Header />
 
       <div className="todo-lists">
-        {todosList.map((todoitem, listIndex) => (
-          <div index={listIndex} className="todo-list">
-            <h1>{todoitem.title}</h1>
-
-            {todoitem.todos.map((todo, index) => (
-              <Todo
-                key={index}
-                index={index}
-                todo={todo}
-                completeTodo={() => completeTodo(listIndex, index)}
-                incompleteTodo={() => incompleteTodo(listIndex, index)}
-                removeTodo={() => removeTodo(listIndex, index)}
-                editTodo={() => editTodo(listIndex, index)}
-              />
-            ))}
-            <TodoForm listIndex={listIndex} addTodo={addTodo} />
-            <div>Total Tasks: {todoitem.todos.length} </div>
-            <div>
-              Active Tasks:{" "}
-              {todoitem.todos.filter((todo) => !todo.isCompleted).length}
-            </div>
-            <div>
-              Completed Tasks:{" "}
-              {todoitem.todos.filter((todo) => todo.isCompleted).length}{" "}
-            </div>
-            <hr />
-            <button onClick={() => editListTitle(listIndex)}>
-              Edit List Title{" "}
-            </button>
-            <button onClick={() => deleteList(listIndex)}>Delete List</button>
+        {todosList.length == 0 ? (
+          <div>
+            <h1>You have no notes.</h1>
           </div>
-        ))}
+        ) : (
+          <div>
+            {" "}
+            {todosList.map((todoitem, listIndex) => (
+              <div index={listIndex} className="todo-list">
+                <h1>{todoitem.title}</h1>
+
+                {todoitem.todos.map((todo, index) => (
+                  <Todo
+                    key={index}
+                    index={index}
+                    todo={todo}
+                    completeTodo={() => completeTodo(listIndex, index)}
+                    incompleteTodo={() => incompleteTodo(listIndex, index)}
+                    removeTodo={() => removeTodo(listIndex, index)}
+                    editTodo={() => editTodo(listIndex, index)}
+                  />
+                ))}
+                <TodoForm listIndex={listIndex} addTodo={addTodo} />
+                <div>Total Tasks: {todoitem.todos.length} </div>
+                <div>
+                  Active Tasks:{" "}
+                  {todoitem.todos.filter((todo) => !todo.isCompleted).length}
+                </div>
+                <div>
+                  Completed Tasks:{" "}
+                  {todoitem.todos.filter((todo) => todo.isCompleted).length}{" "}
+                </div>
+                <hr />
+                <button
+                  onClick={() => editListTitle(listIndex)}
+                  style={{ color: "white", backgroundColor: "blue" }}
+                >
+                  Edit List Title{" "}
+                </button>
+                <button
+                  style={{ color: "white", backgroundColor: "red" }}
+                  onClick={() => deleteList(listIndex)}
+                >
+                  Delete List
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className="addList">
           <button className="btn btn-primary btn-lg" onClick={() => addList()}>
