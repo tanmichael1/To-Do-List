@@ -198,7 +198,11 @@ function App() {
           </div>
         ))}
 
-        <button onClick={() => addList()}>Add List </button>
+        <div className="addList">
+          <button className="btn btn-primary btn-lg" onClick={() => addList()}>
+            +
+          </button>
+        </div>
       </div>
       <Footer />
     </div>

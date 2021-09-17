@@ -39,17 +39,19 @@
 
 .app {
   background: #209cee;
-  /* height: 100vh;
-  padding: 30px; */
+  /* min-height: 100vw; */
+  /* height: 50vw; */
+  /* padding: 30px; */
 }
 
 .todo-lists {
   background: #209cee;
-  position: center;
-  align-items: center;
-  justify-content: center;
+  /* position: center; */
+  /* align-items: center;
+  justify-content: center; */
+  height: 85vh;
+  /* min-height: 100vw; */
   /* margin: auto; */
-  margin: auto;
 }
 
 .todo-list {
@@ -73,6 +75,10 @@
   justify-content: space-between;
   margin-bottom: 6px;
   padding: 3px 10px;
+}
+
+.addList {
+  float: right;
 }
 
 .header {
