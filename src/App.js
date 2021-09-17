@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function Todo({
   todo,
@@ -160,15 +162,13 @@ function App() {
 
   return (
     <div className="app">
-      <h1>To-do List</h1>
+      <Header />
+
       <div className="todo-lists">
         {todosList.map((todoitem, listIndex) => (
           <div index={listIndex} className="todo-list">
             <h1>{todoitem.title}</h1>
-            <button onClick={() => editListTitle(listIndex)}>
-              Edit List Title{" "}
-            </button>
-            <br />
+
             {todoitem.todos.map((todo, index) => (
               <Todo
                 key={index}
@@ -191,12 +191,16 @@ function App() {
               {todoitem.todos.filter((todo) => todo.isCompleted).length}{" "}
             </div>
             <hr />
+            <button onClick={() => editListTitle(listIndex)}>
+              Edit List Title{" "}
+            </button>
             <button onClick={() => deleteList(listIndex)}>Delete List</button>
           </div>
         ))}
 
         <button onClick={() => addList()}>Add List </button>
       </div>
+      <Footer />
     </div>
   );
 }
