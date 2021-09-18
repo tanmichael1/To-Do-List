@@ -44,12 +44,15 @@
   /* padding: 30px; */
 }
 
-.todo-lists {
+.listarea {
   background: #209cee;
+}
+
+.todo-lists {
   /* position: center; */
   /* align-items: center;
   justify-content: center; */
-  height: 85vh;
+
   /* min-height: 100vw; */
   /* margin: auto; */
 }
@@ -62,7 +65,7 @@
 
   margin: auto;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 130px;
 }
 
 .todo {
@@ -78,7 +81,13 @@
 }
 
 .addList {
-  float: right;
+  /* float: right;
+  margin-right: 480px; */
+  /* min-height: 30vh; */
+}
+
+#addListButton {
+  padding: 40px;
 }
 
 .header {

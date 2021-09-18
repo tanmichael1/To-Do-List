@@ -185,13 +185,13 @@ function App() {
     <div className="app">
       <Header />
 
-      <div className="todo-lists">
+      <div className="listarea">
         {todosList.length == 0 ? (
           <div>
             <h1>You have no notes.</h1>
           </div>
         ) : (
-          <div>
+          <div className="todo-lists">
             {" "}
             {todosList.map((todoitem, listIndex) => (
               <div index={listIndex} className="todo-list">
@@ -235,9 +235,12 @@ function App() {
             ))}
           </div>
         )}
-
         <div className="addList">
-          <button className="btn btn-primary btn-lg" onClick={() => addList()}>
+          <button
+            id="addListButton"
+            className="btn btn-primary btn-lg"
+            onClick={() => addList()}
+          >
             +
           </button>
         </div>
