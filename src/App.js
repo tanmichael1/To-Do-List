@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -79,16 +79,28 @@ function TodoForm({ addTodo, listIndex }) {
   );
 }
 
-function Tabs({ addTodo, listIndex }) {
+function Tabs({ changeFilter }) {
   return (
     <div className="tabs">
-      <button type="button" style={{ flex: 1 }}>
+      <button
+        onClick={() => changeFilter("allitems")}
+        type="button"
+        style={{ flex: 1 }}
+      >
         All Item
       </button>
-      <button type="button" style={{ flex: 1 }}>
+      <button
+        onClick={() => changeFilter("incompleted")}
+        type="button"
+        style={{ flex: 1 }}
+      >
         Active
       </button>
-      <button type="button" style={{ flex: 1 }}>
+      <button
+        onClick={() => changeFilter("completed")}
+        type="button"
+        style={{ flex: 1 }}
+      >
         Completed
       </button>
       <span style={{ color: "#cecece", flex: 4, textAlign: "center" }}>
@@ -135,6 +147,8 @@ function App() {
       ],
     },
   ]);
+
+  const [filter, setFilter] = useState("allitems");
 
   function addTodo(text, index) {
     var newTodos = [...todosList];
@@ -199,6 +213,9 @@ function App() {
       setTodosList(newTodos);
     }
   }
+  function changeFilter(newFilter) {
+    setFilter(newFilter);
+  }
 
   return (
     <div className="app">
@@ -216,17 +233,34 @@ function App() {
               <div index={listIndex} className="todo-list">
                 <h1>{todoitem.title}</h1>
 
-                {todoitem.todos.map((todo, index) => (
-                  <Todo
-                    key={index}
-                    index={index}
-                    todo={todo}
-                    completeTodo={() => completeTodo(listIndex, index)}
-                    incompleteTodo={() => incompleteTodo(listIndex, index)}
-                    removeTodo={() => removeTodo(listIndex, index)}
-                    editTodo={() => editTodo(listIndex, index)}
-                  />
-                ))}
+                {todoitem.todos
+                  .filter(function (todo) {
+                    console.log(filter);
+                    console.log(todo);
+                    if (filter == "allitems") {
+                      return true;
+                    } else if (filter == "completed") {
+                      if (todo.isCompleted) {
+                        return true;
+                      }
+                    } else if (filter == "incompleted") {
+                      console.log("here");
+                      if (!todo.isCompleted) {
+                        return true;
+                      }
+                    }
+                  })
+                  .map((todo, index) => (
+                    <Todo
+                      key={index}
+                      index={index}
+                      todo={todo}
+                      completeTodo={() => completeTodo(listIndex, index)}
+                      incompleteTodo={() => incompleteTodo(listIndex, index)}
+                      removeTodo={() => removeTodo(listIndex, index)}
+                      editTodo={() => editTodo(listIndex, index)}
+                    />
+                  ))}
                 <TodoForm listIndex={listIndex} addTodo={addTodo} />
                 <div className="taskNumbers">
                   <div>Total Tasks: {todoitem.todos.length} </div>
@@ -266,7 +300,7 @@ function App() {
           </button>
         </div>
       </div>
-      <Tabs />
+      <Tabs changeFilter={changeFilter} />
       <Footer />
     </div>
   );
