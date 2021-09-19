@@ -79,6 +79,25 @@ function TodoForm({ addTodo, listIndex }) {
   );
 }
 
+function Tabs({ addTodo, listIndex }) {
+  return (
+    <div className="tabs">
+      <button type="button" style={{ flex: 1 }}>
+        All Item
+      </button>
+      <button type="button" style={{ flex: 1 }}>
+        Active
+      </button>
+      <button type="button" style={{ flex: 1 }}>
+        Completed
+      </button>
+      <span style={{ color: "#cecece", flex: 4, textAlign: "center" }}>
+        Number of Items | Make use of storage to store data
+      </span>
+    </div>
+  );
+}
+
 function App() {
   const [todosList, setTodosList] = React.useState([
     {
@@ -209,28 +228,30 @@ function App() {
                   />
                 ))}
                 <TodoForm listIndex={listIndex} addTodo={addTodo} />
-                <div>Total Tasks: {todoitem.todos.length} </div>
-                <div>
-                  Active Tasks:{" "}
-                  {todoitem.todos.filter((todo) => !todo.isCompleted).length}
+                <div className="taskNumbers">
+                  <div>Total Tasks: {todoitem.todos.length} </div>
+                  <div>
+                    Active Tasks:{" "}
+                    {todoitem.todos.filter((todo) => !todo.isCompleted).length}
+                  </div>
+                  <div>
+                    Completed Tasks:{" "}
+                    {todoitem.todos.filter((todo) => todo.isCompleted).length}{" "}
+                  </div>
+                  <hr />
+                  <button
+                    onClick={() => editListTitle(listIndex)}
+                    style={{ color: "white", backgroundColor: "blue" }}
+                  >
+                    Edit List Title{" "}
+                  </button>
+                  <button
+                    style={{ color: "white", backgroundColor: "red" }}
+                    onClick={() => deleteList(listIndex)}
+                  >
+                    Delete List
+                  </button>
                 </div>
-                <div>
-                  Completed Tasks:{" "}
-                  {todoitem.todos.filter((todo) => todo.isCompleted).length}{" "}
-                </div>
-                <hr />
-                <button
-                  onClick={() => editListTitle(listIndex)}
-                  style={{ color: "white", backgroundColor: "blue" }}
-                >
-                  Edit List Title{" "}
-                </button>
-                <button
-                  style={{ color: "white", backgroundColor: "red" }}
-                  onClick={() => deleteList(listIndex)}
-                >
-                  Delete List
-                </button>
               </div>
             ))}
           </div>
@@ -245,6 +266,7 @@ function App() {
           </button>
         </div>
       </div>
+      <Tabs />
       <Footer />
     </div>
   );

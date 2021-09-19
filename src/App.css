@@ -57,6 +57,8 @@
   /* margin: auto; */
 }
 
+/* List */
+
 .todo-list {
   background: #e8e8e8;
   border-radius: 4px;
@@ -74,16 +76,28 @@
   border-radius: 3px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
   display: flex;
-  font-size: 12px;
+  font-size: 22px;
   justify-content: space-between;
   margin-bottom: 6px;
   padding: 3px 10px;
+}
+
+.taskNumbers {
+  font-size: 24px;
 }
 
 .addList {
   /* float: right;
   margin-right: 480px; */
   /* min-height: 30vh; */
+}
+
+.tabs {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: red;
+  position: center;
+  text-align: center;
 }
 
 #addListButton {
