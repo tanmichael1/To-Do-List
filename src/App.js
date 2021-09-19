@@ -79,33 +79,34 @@ function TodoForm({ addTodo, listIndex }) {
   );
 }
 
-function Tabs({ changeFilter }) {
+function Tabs({ changeFilter, filter }) {
   return (
     <div className="tabs">
       <button
-        onClick={() => changeFilter("allitems")}
+        onClick={() => changeFilter("All Items")}
+        defaultValue="true"
         type="button"
         style={{ flex: 1 }}
+        // className="btn btn-primary btn-lg"
       >
-        All Item
+        All Items
       </button>
       <button
-        onClick={() => changeFilter("incompleted")}
+        onClick={() => changeFilter("Active")}
         type="button"
         style={{ flex: 1 }}
       >
         Active
       </button>
       <button
-        onClick={() => changeFilter("completed")}
+        onClick={() => changeFilter("Completed")}
         type="button"
         style={{ flex: 1 }}
       >
         Completed
       </button>
-      <span style={{ color: "#cecece", flex: 4, textAlign: "center" }}>
-        Number of Items | Make use of storage to store data
-      </span>
+      <br />
+      Current: {filter}
     </div>
   );
 }
@@ -148,7 +149,7 @@ function App() {
     },
   ]);
 
-  const [filter, setFilter] = useState("allitems");
+  const [filter, setFilter] = useState("All Items");
 
   function addTodo(text, index) {
     var newTodos = [...todosList];
@@ -237,13 +238,13 @@ function App() {
                   .filter(function (todo) {
                     console.log(filter);
                     console.log(todo);
-                    if (filter == "allitems") {
+                    if (filter == "All Items") {
                       return true;
-                    } else if (filter == "completed") {
+                    } else if (filter == "Completed") {
                       if (todo.isCompleted) {
                         return true;
                       }
-                    } else if (filter == "incompleted") {
+                    } else if (filter == "Active") {
                       console.log("here");
                       if (!todo.isCompleted) {
                         return true;
@@ -300,7 +301,7 @@ function App() {
           </button>
         </div>
       </div>
-      <Tabs changeFilter={changeFilter} />
+      <Tabs changeFilter={changeFilter} filter={filter} />
       <Footer />
     </div>
   );
