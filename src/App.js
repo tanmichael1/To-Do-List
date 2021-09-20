@@ -158,16 +158,44 @@ function App() {
     setTodosList(newTodos);
   }
 
-  function completeTodo(listIndex, itemIndex) {
+  function completeTodo(listIndex, itemIndex, todo) {
     const newTodos = [...todosList];
-    newTodos[listIndex].todos[itemIndex].isCompleted = true;
-    setTodosList(newTodos);
+    if (filter == "All Items") {
+      newTodos[listIndex].todos[itemIndex].isCompleted = true;
+      setTodosList(newTodos);
+    } else {
+      var realIndex = 0;
+      var todotext = todo.text;
+      var todoLength = todosList[listIndex].todos.length;
+      for (var i = 0; i < todoLength; i++) {
+        if (todosList[listIndex].todos[i].text == todotext) {
+          realIndex = i;
+        }
+      }
+
+      newTodos[listIndex].todos[realIndex].isCompleted = true;
+      setTodosList(newTodos);
+    }
   }
 
-  function incompleteTodo(listIndex, itemIndex) {
+  function incompleteTodo(listIndex, itemIndex, todo) {
     const newTodos = [...todosList];
-    newTodos[listIndex].todos[itemIndex].isCompleted = false;
-    setTodosList(newTodos);
+    if (filter == "All Items") {
+      newTodos[listIndex].todos[itemIndex].isCompleted = false;
+      setTodosList(newTodos);
+    } else {
+      var realIndex = 0;
+      var todotext = todo.text;
+      var todoLength = todosList[listIndex].todos.length;
+      for (var i = 0; i < todoLength; i++) {
+        if (todosList[listIndex].todos[i].text == todotext) {
+          realIndex = i;
+        }
+      }
+
+      newTodos[listIndex].todos[realIndex].isCompleted = false;
+      setTodosList(newTodos);
+    }
   }
 
   function removeTodo(listIndex, itemIndex) {
@@ -256,8 +284,10 @@ function App() {
                       key={index}
                       index={index}
                       todo={todo}
-                      completeTodo={() => completeTodo(listIndex, index)}
-                      incompleteTodo={() => incompleteTodo(listIndex, index)}
+                      completeTodo={() => completeTodo(listIndex, index, todo)}
+                      incompleteTodo={() =>
+                        incompleteTodo(listIndex, index, todo)
+                      }
                       removeTodo={() => removeTodo(listIndex, index)}
                       editTodo={() => editTodo(listIndex, index)}
                     />
