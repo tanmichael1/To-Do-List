@@ -11,13 +11,11 @@ import { IoIosCheckmarkCircle } from "react-icons/fa";
 function App() {
   return (
     <div className="app">
-      <Header />
       <Router>
         <Switch>
           <Route exact path="/" component={TodosLists} />
           <Route path="/about" component={About} />
         </Switch>
-        <Footer />
       </Router>
     </div>
   );

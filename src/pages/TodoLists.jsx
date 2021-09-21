@@ -250,6 +250,7 @@ function TodoLists() {
 
   return (
     <div>
+      <Header />
       <div className="listarea">
         {todosList.length == 0 ? (
           <div>
@@ -332,6 +333,7 @@ function TodoLists() {
         </div>
       </div>
       <Tabs changeFilter={changeFilter} filter={filter} />
+      <Footer />
     </div>
   );
 }
