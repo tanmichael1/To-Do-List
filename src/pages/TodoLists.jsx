@@ -5,7 +5,9 @@ import "../App.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { IoIosCheckmarkCircle } from "react-icons/fa";
-
+import { FaBeer, FaCheckCircle } from "react-icons/fa";
+import { AiFillCloseCircle, AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { GoCircleSlash } from "react-icons/go";
 function Todo({
   todo,
   index,
@@ -23,14 +25,14 @@ function Todo({
       <div>
         {todo.isCompleted ? (
           <button onClick={() => incompleteTodo(index)}>
-            Mark as Incomplete
+            <GoCircleSlash />
           </button>
         ) : (
           <button
             style={{ color: "white", backgroundColor: "green" }}
             onClick={() => completeTodo(index)}
           >
-            Mark as Complete
+            <FaCheckCircle />
           </button>
         )}
 
@@ -38,13 +40,13 @@ function Todo({
           style={{ color: "white", backgroundColor: "red" }}
           onClick={() => removeTodo(index)}
         >
-          x
+          <AiFillDelete />
         </button>
         <button
           style={{ color: "white", backgroundColor: "blue" }}
           onClick={() => editTodo(index)}
         >
-          Edit
+          <AiFillEdit />
         </button>
       </div>
     </div>
