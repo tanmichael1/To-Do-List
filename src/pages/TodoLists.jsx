@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import { IoIosCheckmarkCircle } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { AiFillCloseCircle, AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { HiPencilAlt } from "react-icons/hi";
 import { GoCircleSlash } from "react-icons/go";
 function Todo({
   todo,
@@ -73,11 +74,12 @@ function TodoForm({ addTodo, listIndex }) {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
+      {"  "}
       <button
         style={{ color: "white", backgroundColor: "green" }}
         type="submit"
       >
-        Submit{" "}
+        <HiPencilAlt />
       </button>
     </form>
   );
@@ -86,31 +88,35 @@ function TodoForm({ addTodo, listIndex }) {
 function Tabs({ changeFilter, filter }) {
   return (
     <div className="tabs">
+      <h1>Filter </h1>
       <button
         onClick={() => changeFilter("All Items")}
         defaultValue="true"
         type="button"
         style={{ flex: 1 }}
+        className="btn btn-info"
         // className="btn btn-primary btn-lg"
       >
         All Items
-      </button>
+      </button>{" "}
       <button
         onClick={() => changeFilter("Active")}
         type="button"
         style={{ flex: 1 }}
+        className="btn btn-info"
       >
         Active
-      </button>
+      </button>{" "}
       <button
         onClick={() => changeFilter("Completed")}
         type="button"
         style={{ flex: 1 }}
+        className="btn btn-info"
       >
         Completed
       </button>
-      <br />
-      Current: {filter}
+      <br /> <br />
+      <p> Current filter: {filter}</p>
     </div>
   );
 }
