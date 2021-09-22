@@ -5,7 +5,7 @@ import "../App.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { IoIosCheckmarkCircle } from "react-icons/fa";
-import { FaBeer, FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
 import { AiFillCloseCircle, AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { GoCircleSlash } from "react-icons/go";
 function Todo({
@@ -263,8 +263,23 @@ function TodoLists() {
             {" "}
             {todosList.map((todoitem, listIndex) => (
               <div index={listIndex} className="todo-list">
-                <h1>{todoitem.title}</h1>
-
+                <span>
+                  <h1>
+                    {todoitem.title}{" "}
+                    <button
+                      onClick={() => editListTitle(listIndex)}
+                      style={{ color: "white", backgroundColor: "blue" }}
+                    >
+                      <AiFillEdit />
+                    </button>{" "}
+                    <button
+                      style={{ color: "white", backgroundColor: "red" }}
+                      onClick={() => deleteList(listIndex)}
+                    >
+                      <AiFillDelete />
+                    </button>
+                  </h1>{" "}
+                </span>
                 {todoitem.todos
                   .filter(function (todo) {
                     console.log(filter);
@@ -306,19 +321,6 @@ function TodoLists() {
                     Completed Tasks:{" "}
                     {todoitem.todos.filter((todo) => todo.isCompleted).length}{" "}
                   </div>
-                  <hr />
-                  <button
-                    onClick={() => editListTitle(listIndex)}
-                    style={{ color: "white", backgroundColor: "blue" }}
-                  >
-                    Edit List Title{" "}
-                  </button>
-                  <button
-                    style={{ color: "white", backgroundColor: "red" }}
-                    onClick={() => deleteList(listIndex)}
-                  >
-                    Delete List
-                  </button>
                 </div>
               </div>
             ))}
