@@ -94,9 +94,12 @@
 }
 
 .addList {
-  /* float: right;
-  margin-right: 480px; */
-  /* min-height: 30vh; */
+  position: right;
+  display: inline-block;
+  margin-left: 75%;
+  /* margin-right: 480px;
+  min-height: 30vh; */
+  align-items: right;
 }
 
 .tabs {
@@ -109,6 +112,11 @@
 
 #addListButton {
   padding: 40px;
+  display: block;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 1px solid black;
 }
 
 .header {
