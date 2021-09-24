@@ -22,7 +22,7 @@ function Todo({
       className="todo"
       style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
     >
-      {todo.text}
+      <p>{todo.text} </p>
       <div>
         {todo.isCompleted ? (
           <button onClick={() => incompleteTodo(index)}>
