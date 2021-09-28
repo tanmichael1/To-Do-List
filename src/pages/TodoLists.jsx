@@ -9,6 +9,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { AiFillCloseCircle, AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { HiPencilAlt } from "react-icons/hi";
 import { GoCircleSlash } from "react-icons/go";
+import Tabs from "../components/Tabs";
 function Todo({
   todo,
   index,
@@ -85,41 +86,41 @@ function TodoForm({ addTodo, listIndex }) {
   );
 }
 
-function Tabs({ changeFilter, filter }) {
-  return (
-    <div className="tabs">
-      <h1>Filter </h1>
-      <button
-        onClick={() => changeFilter("All Items")}
-        defaultValue="true"
-        type="button"
-        style={{ flex: 1 }}
-        className="btn btn-info"
-        // className="btn btn-primary btn-lg"
-      >
-        All Items
-      </button>{" "}
-      <button
-        onClick={() => changeFilter("Active")}
-        type="button"
-        style={{ flex: 1 }}
-        className="btn btn-info"
-      >
-        Active
-      </button>{" "}
-      <button
-        onClick={() => changeFilter("Completed")}
-        type="button"
-        style={{ flex: 1 }}
-        className="btn btn-info"
-      >
-        Completed
-      </button>
-      <br /> <br />
-      <p> Current filter: {filter}</p>
-    </div>
-  );
-}
+// function Tabs({ changeFilter, filter }) {
+//   return (
+//     <div className="tabs">
+//       <h1>Filter </h1>
+//       <button
+//         onClick={() => changeFilter("All Items")}
+//         defaultValue="true"
+//         type="button"
+//         style={{ flex: 1 }}
+//         className="btn btn-info"
+//         // className="btn btn-primary btn-lg"
+//       >
+//         All Items
+//       </button>{" "}
+//       <button
+//         onClick={() => changeFilter("Active")}
+//         type="button"
+//         style={{ flex: 1 }}
+//         className="btn btn-info"
+//       >
+//         Active
+//       </button>{" "}
+//       <button
+//         onClick={() => changeFilter("Completed")}
+//         type="button"
+//         style={{ flex: 1 }}
+//         className="btn btn-info"
+//       >
+//         Completed
+//       </button>
+//       <br /> <br />
+//       <p> Current filter: {filter}</p>
+//     </div>
+//   );
+// }
 
 function TodoLists() {
   const [todosList, setTodosList] = React.useState([
@@ -140,23 +141,23 @@ function TodoLists() {
         },
       ],
     },
-    {
-      title: "Other List",
-      todos: [
-        {
-          text: "Learn about React",
-          isCompleted: false,
-        },
-        {
-          text: "Meet friend for lunch",
-          isCompleted: false,
-        },
-        {
-          text: "Build really cool todo app",
-          isCompleted: false,
-        },
-      ],
-    },
+    // {
+    //   title: "Other List",
+    //   todos: [
+    //     {
+    //       text: "Learn about React",
+    //       isCompleted: false,
+    //     },
+    //     {
+    //       text: "Meet friend for lunch",
+    //       isCompleted: false,
+    //     },
+    //     {
+    //       text: "Build really cool todo app",
+    //       isCompleted: false,
+    //     },
+    //   ],
+    // },
   ]);
 
   const [filter, setFilter] = useState("All Items");
@@ -342,8 +343,8 @@ function TodoLists() {
           </button>
         </div>
       </div>
-      <Tabs changeFilter={changeFilter} filter={filter} />
-      <Footer />
+      {/* <Tabs changeFilter={changeFilter} filter={filter} /> */}
+      <Footer changeFilter={changeFilter} filter={filter} />
     </div>
   );
 }
