@@ -64,8 +64,8 @@ body {
   position: right;
   display: inline-block;
   margin-left: 75%;
-  /* margin-right: 480px;
-  min-height: 30vh; */
+  height: 210px;
+  margin-bottom: 10px;
   align-items: right;
   min-height: 40vh;
 }
@@ -103,6 +103,31 @@ body {
   background-color: #342383;
 }
 
+.totalFooter {
+  position: center;
+  color: white;
+  text-align: center;
+  width: 100%;
+  /* padding-top: 3vh; */
+  /* padding-bottom: 6vh; */
+  /* margin: -10px auto -100px auto; */
+
+  /* bottom: 0; */
+  height: 2.5rem;
+  /* background-color: #342383; */
+  /* position: absolute; */
+  /* */
+  /* position: fixed; */
+  position: fixed;
+  height: 210px;
+  /* background-color: red; */
+  bottom: 10px;
+  margin-bottom: 160px;
+  /* left: 0px;
+  right: 0px;
+  margin-bottom: 0px; */
+}
+
 .footer {
   position: center;
   color: white;
@@ -122,7 +147,7 @@ body {
   height: 210px;
   /* background-color: red; */
   bottom: 0px;
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
   /* left: 0px;
   right: 0px;
   margin-bottom: 0px; */

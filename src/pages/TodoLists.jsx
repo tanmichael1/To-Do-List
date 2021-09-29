@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "../App.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import AddNewList from "../components/AddNewList";
 import { IoIosCheckmarkCircle } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { AiFillCloseCircle, AiFillDelete, AiFillEdit } from "react-icons/ai";
@@ -333,7 +334,9 @@ function TodoLists() {
             ))}
           </div>
         )}
-        <div className="addList">
+
+        {/* <AddNewList addList={addList} /> */}
+        {/* <div className="addList">
           <button
             id="addListButton"
             className="btn btn-primary btn-lg"
@@ -341,10 +344,10 @@ function TodoLists() {
           >
             +
           </button>
-        </div>
+        </div> */}
       </div>
       {/* <Tabs changeFilter={changeFilter} filter={filter} /> */}
-      <Footer changeFilter={changeFilter} filter={filter} />
+      <Footer addList={addList} changeFilter={changeFilter} filter={filter} />
     </div>
   );
 }
