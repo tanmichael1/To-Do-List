@@ -10,7 +10,6 @@ function Tabs({ changeFilter, filter }) {
         type="button"
         style={{ flex: 1 }}
         className="btn btn-info"
-        // className="btn btn-primary btn-lg"
       >
         All Items
       </button>{" "}

@@ -1,91 +1,11 @@
 import React, { useState } from "react";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "../App.css";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
-import AddNewList from "../components/AddNewList";
-import { IoIosCheckmarkCircle } from "react-icons/fa";
-import { FaCheckCircle } from "react-icons/fa";
-import { AiFillCloseCircle, AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { HiPencilAlt } from "react-icons/hi";
-import { GoCircleSlash } from "react-icons/go";
-import Tabs from "../components/Tabs";
-function Todo({
-  todo,
-  index,
-  completeTodo,
-  incompleteTodo,
-  removeTodo,
-  editTodo,
-}) {
-  return (
-    <div
-      className="todo"
-      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
-    >
-      <p>{todo.text} </p>
-      <div>
-        {todo.isCompleted ? (
-          <button onClick={() => incompleteTodo(index)}>
-            <GoCircleSlash />
-          </button>
-        ) : (
-          <button
-            style={{ color: "white", backgroundColor: "green" }}
-            onClick={() => completeTodo(index)}
-          >
-            <FaCheckCircle />
-          </button>
-        )}
-
-        <button
-          style={{ color: "white", backgroundColor: "red" }}
-          onClick={() => removeTodo(index)}
-        >
-          <AiFillDelete />
-        </button>
-        <button
-          style={{ color: "white", backgroundColor: "blue" }}
-          onClick={() => editTodo(index)}
-        >
-          <AiFillEdit />
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function TodoForm({ addTodo, listIndex }) {
-  const [value, setValue] = React.useState("");
-  var test = listIndex;
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!value) return;
-    if (value == " ") return;
-    addTodo(value, test);
-    setValue("");
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className="input"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      {"  "}
-      <button
-        style={{ color: "white", backgroundColor: "green" }}
-        type="submit"
-      >
-        <HiPencilAlt />
-      </button>
-    </form>
-  );
-}
+import Footer from "../components/footer/Footer";
+import Todo from "../components/ToDo/Todo";
+import TodoForm from "../components/ToDo/TodoForm";
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 
 function TodoLists() {
   const [todosList, setTodosList] = React.useState([
