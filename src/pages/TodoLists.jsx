@@ -87,42 +87,6 @@ function TodoForm({ addTodo, listIndex }) {
   );
 }
 
-// function Tabs({ changeFilter, filter }) {
-//   return (
-//     <div className="tabs">
-//       <h1>Filter </h1>
-//       <button
-//         onClick={() => changeFilter("All Items")}
-//         defaultValue="true"
-//         type="button"
-//         style={{ flex: 1 }}
-//         className="btn btn-info"
-//         // className="btn btn-primary btn-lg"
-//       >
-//         All Items
-//       </button>{" "}
-//       <button
-//         onClick={() => changeFilter("Active")}
-//         type="button"
-//         style={{ flex: 1 }}
-//         className="btn btn-info"
-//       >
-//         Active
-//       </button>{" "}
-//       <button
-//         onClick={() => changeFilter("Completed")}
-//         type="button"
-//         style={{ flex: 1 }}
-//         className="btn btn-info"
-//       >
-//         Completed
-//       </button>
-//       <br /> <br />
-//       <p> Current filter: {filter}</p>
-//     </div>
-//   );
-// }
-
 function TodoLists() {
   const [todosList, setTodosList] = React.useState([
     {
@@ -142,23 +106,6 @@ function TodoLists() {
         },
       ],
     },
-    // {
-    //   title: "Other List",
-    //   todos: [
-    //     {
-    //       text: "Learn about React",
-    //       isCompleted: false,
-    //     },
-    //     {
-    //       text: "Meet friend for lunch",
-    //       isCompleted: false,
-    //     },
-    //     {
-    //       text: "Build really cool todo app",
-    //       isCompleted: false,
-    //     },
-    //   ],
-    // },
   ]);
 
   const [filter, setFilter] = useState("All Items");
@@ -263,7 +210,7 @@ function TodoLists() {
       <Header />
       <div className="listarea">
         {todosList.length == 0 ? (
-          <div>
+          <div className="noLists">
             <h1>You have no notes.</h1>
           </div>
         ) : (
@@ -334,19 +281,7 @@ function TodoLists() {
             ))}
           </div>
         )}
-
-        {/* <AddNewList addList={addList} /> */}
-        {/* <div className="addList">
-          <button
-            id="addListButton"
-            className="btn btn-primary btn-lg"
-            onClick={() => addList()}
-          >
-            +
-          </button>
-        </div> */}
       </div>
-      {/* <Tabs changeFilter={changeFilter} filter={filter} /> */}
       <Footer addList={addList} changeFilter={changeFilter} filter={filter} />
     </div>
   );
