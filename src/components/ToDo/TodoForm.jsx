@@ -15,19 +15,23 @@ function TodoForm({ addTodo, listIndex }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className="input"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      {"  "}
-      <button
-        style={{ color: "white", backgroundColor: "green" }}
-        type="submit"
-      >
-        <HiPencilAlt />
-      </button>
+      <span>
+        <input
+          type="text"
+          id="inputdefault"
+          className="todoInput"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        {"  "}
+        <button
+          className="todoButton"
+          style={{ color: "white", backgroundColor: "green" }}
+          type="submit"
+        >
+          <HiPencilAlt size="30px" />
+        </button>
+      </span>
     </form>
   );
 }
