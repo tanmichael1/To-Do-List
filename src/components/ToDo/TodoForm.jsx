@@ -8,7 +8,7 @@ function TodoForm({ addTodo, listIndex }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value) return;
-    if (value == " ") return;
+    if (value === " ") return;
     addTodo(value, test);
     setValue("");
   };

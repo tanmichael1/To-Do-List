@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "../App.css";
 import Header from "../components/Header";
 import Footer from "../components/footer/Footer";
@@ -32,14 +31,13 @@ function TodoLists() {
 
   function addTodo(text, index) {
     var newTodos = [...todosList];
-    var length = newTodos[index].todos.length;
     newTodos[index].todos.push({ text: text, isCompleted: false });
     setTodosList(newTodos);
   }
 
   function completeTodo(listIndex, itemIndex, todo) {
     const newTodos = [...todosList];
-    if (filter == "All Items") {
+    if (filter === "All Items") {
       newTodos[listIndex].todos[itemIndex].isCompleted = true;
       setTodosList(newTodos);
     } else {
@@ -47,7 +45,7 @@ function TodoLists() {
       var todotext = todo.text;
       var todoLength = todosList[listIndex].todos.length;
       for (var i = 0; i < todoLength; i++) {
-        if (todosList[listIndex].todos[i].text == todotext) {
+        if (todosList[listIndex].todos[i].text === todotext) {
           realIndex = i;
         }
       }
@@ -59,7 +57,7 @@ function TodoLists() {
 
   function incompleteTodo(listIndex, itemIndex, todo) {
     const newTodos = [...todosList];
-    if (filter == "All Items") {
+    if (filter === "All Items") {
       newTodos[listIndex].todos[itemIndex].isCompleted = false;
       setTodosList(newTodos);
     } else {
@@ -67,7 +65,7 @@ function TodoLists() {
       var todotext = todo.text;
       var todoLength = todosList[listIndex].todos.length;
       for (var i = 0; i < todoLength; i++) {
-        if (todosList[listIndex].todos[i].text == todotext) {
+        if (todosList[listIndex].todos[i].text === todotext) {
           realIndex = i;
         }
       }
@@ -129,7 +127,7 @@ function TodoLists() {
     <div>
       <Header />
       <div className="listarea">
-        {todosList.length == 0 ? (
+        {todosList.length === 0 ? (
           <div className="noLists">
             <h1>You have no notes.</h1>
           </div>
@@ -159,18 +157,18 @@ function TodoLists() {
                   .filter(function (todo) {
                     console.log(filter);
                     console.log(todo);
-                    if (filter == "All Items") {
+                    if (filter === "All Items") {
                       return true;
-                    } else if (filter == "Completed") {
+                    } else if (filter === "Completed") {
                       if (todo.isCompleted) {
                         return true;
                       }
-                    } else if (filter == "Active") {
-                      console.log("here");
+                    } else if (filter === "Active") {
                       if (!todo.isCompleted) {
                         return true;
                       }
                     }
+                    return false;
                   })
                   .map((todo, index) => (
                     <Todo

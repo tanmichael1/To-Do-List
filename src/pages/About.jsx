@@ -14,6 +14,7 @@ function About() {
           className="transition duration-500 ease-in-out border-b border-pink-600 font-medium text-pink-600 hover:text-pink-500"
           href="https://github.com/tanmichael1/To-Do-List"
           target="_blank"
+          rel="noreferrer"
         >
           View the code on GitHub &rarr;
         </a>

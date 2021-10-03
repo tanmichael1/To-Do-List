@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AddNewList from "./AddNewList";
 import Tabs from "./Tabs";
 
