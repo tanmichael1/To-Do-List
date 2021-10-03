@@ -122,7 +122,7 @@ body {
   }
 
   .todo-list {
-    max-width: 250px;
+    max-width: 80%;
     font-size: 10px;
   }
 
@@ -210,14 +210,14 @@ body {
 /*Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .todo-list {
-    max-width: 500px;
+    max-width: 80%;
   }
 }
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
   .todo-list {
-    max-width: 600px;
+    max-width: 80%;
   }
 
   .header {
@@ -236,7 +236,7 @@ body {
   }
 
   .todo-list {
-    max-width: 800px;
+    max-width: 70%;
   }
 
   .tabButton {
@@ -271,5 +271,12 @@ body {
 
   .tabsHeader {
     font-size: 40px;
+  }
+}
+
+/* desktop styles */
+@media screen and (min-width: 1200px) {
+  .todo-list {
+    max-width: 45%;
   }
 }
