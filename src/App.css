@@ -4,31 +4,30 @@
 
 body {
   background-color: rgb(29, 26, 26) !important;
+  color: white;
 }
+
+/* To Do List */
 
 .listarea {
   background: #209cee;
   min-height: 90vh;
 }
 
-/* List */
+.noLists {
+  margin-top: 100px;
+  position: center;
+  text-align: center;
+}
 
 .todo-list {
   background: #e8e8e8;
   border-radius: 4px;
-  max-width: 800px;
   padding: 5px;
-
   margin: auto;
   margin-top: 20px;
   margin-bottom: 130px;
-}
-
-.noLists {
-  margin-top: 100px;
-  position: center;
-  color: white;
-  text-align: center;
+  color: black;
 }
 
 .todo {
@@ -37,15 +36,9 @@ body {
   border-radius: 3px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
   display: flex;
-  font-size: 22px;
   justify-content: space-between;
   margin-bottom: 6px;
   padding: 3px 10px;
-}
-
-.todoInput {
-  font-size: 22px;
-  width: 80%;
 }
 
 .todoButton {
@@ -53,9 +46,7 @@ body {
   margin-left: 5px;
 }
 
-.taskNumbers {
-  font-size: 24px;
-}
+/* About */
 
 .about {
   align-items: center;
@@ -63,7 +54,29 @@ body {
   text-align: center;
   height: 100vh;
   background: #344991;
-  color: white;
+}
+
+/* Header */
+
+.header {
+  position: center;
+  text-align: center;
+  width: 100%;
+  padding-top: 3vw;
+  bottom: 0;
+  height: 2rem;
+  background-color: #342383;
+}
+
+/* Footer / Tabs */
+
+.totalFooter {
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  height: 210px;
+  bottom: 10px;
+  margin-bottom: 160px;
 }
 
 .addList {
@@ -76,53 +89,22 @@ body {
   min-height: 40vh;
 }
 
-.tabs {
-  background-color: #342383;
-  position: center;
-  color: white;
-  text-align: center;
-}
-
 #addListButton {
-  padding: 40px;
   display: block;
-  height: 120px;
-  width: 120px;
   border-radius: 50%;
   border: 1px solid black;
 }
 
-.header {
-  position: center;
-  color: white;
-  text-align: center;
-  width: 100%;
-  padding-top: 3vw;
-  padding-bottom: 12vh;
-  bottom: 0;
-  height: 2rem;
-  background-color: #342383;
-}
-
-.totalFooter {
-  color: white;
-  text-align: center;
-  width: 100%;
-  position: fixed;
-  height: 210px;
-  bottom: 10px;
-  margin-bottom: 160px;
-}
-
 .footer {
-  color: white;
-  text-align: center;
   width: 100%;
   height: 2.5rem;
   background-color: #342383;
   position: fixed;
-  height: 210px;
   bottom: 0px;
+}
+
+.tabs {
+  position: center;
 }
 
 .bottomFooter {
@@ -132,48 +114,20 @@ body {
   padding-bottom: 100px;
 }
 
-.tabsHeader {
-  font-size: 40px;
-}
-
 /*Extra small*/
 @media only screen and (min-width: 0px) {
   .header {
-    position: center;
-    color: white;
-    text-align: center;
-    width: 100%;
-    background-color: #342383;
     height: 3.5rem;
     padding-bottom: 20vh;
   }
 
-  .listarea {
-    min-height: 90vh;
-  }
-
   .todo-list {
-    background: #e8e8e8;
-    border-radius: 4px;
     max-width: 250px;
-    padding: 5px;
     font-size: 10px;
-
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 130px;
   }
 
   .todo {
-    align-items: center;
-    background: #fff;
-    border-radius: 3px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
-    display: flex;
     font-size: 15px;
-    justify-content: space-between;
-    margin-bottom: 6px;
-    padding: 3px 10px;
   }
 
   .todoInput {
@@ -189,22 +143,16 @@ body {
   .taskNumbers {
     font-size: 14px;
   }
+
   .footer {
-    color: white;
-    text-align: center;
-    width: 100%;
-    height: 2.5rem;
-    background-color: #342383;
-    position: fixed;
-    height: 50px;
-    bottom: 0px;
-    margin-bottom: 50px;
+    height: 260px;
+    margin-bottom: 0;
   }
 
   .totalFooter {
     height: 0px;
-    bottom: 0px;
-    margin-bottom: 160px;
+    bottom: 10px;
+    margin-bottom: 330px;
   }
 
   .tabsHeader {
@@ -213,83 +161,36 @@ body {
 
   #addListButton {
     padding: 10px;
-    display: block;
     height: 70px;
     width: 70px;
-    border-radius: 50%;
-    border: 1px solid black;
   }
 
-  .tabsHeader {
+  .tabButton {
+    font-size: 15px;
   }
 }
 
 /*Quite small*/
 @media only screen and (min-width: 360px) {
-  .listarea {
-    min-height: 90vh;
-  }
-
-  .todo-list {
-    background: #e8e8e8;
-    border-radius: 4px;
-    max-width: 250px;
-    padding: 5px;
-    font-size: 10px;
-
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 130px;
-    /* min-height: 500px; */
-  }
-
-  /* .addList {
-
-
-    height: 210px;
-    margin-bottom: 10px;
-    
-    min-height: 40vh;
-  } */
-
   .header {
-    position: center;
-    color: white;
-    text-align: center;
-    height: 3.5rem;
-    background-color: #342383;
-
     padding-bottom: 15vh;
   }
 
   .todo {
-    align-items: center;
-    background: #fff;
-    border-radius: 3px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
-    display: flex;
     font-size: 18px;
-    justify-content: space-between;
-    margin-bottom: 6px;
-    padding: 3px 10px;
-  }
-
-  .todoInput {
-    font-size: 14px;
-    width: 61%;
   }
 
   #addListButton {
-    padding: 10px;
-    display: block;
     height: 90px;
     width: 90px;
-    border-radius: 50%;
-    border: 1px solid black;
   }
 
   .taskNumbers {
     font-size: 20px;
+  }
+
+  .tabButton {
+    font-size: 15px;
   }
 
   .tabButtons {
@@ -297,20 +198,11 @@ body {
   }
 
   .footer {
-    color: white;
-    text-align: center;
-    width: 100%;
-    height: 2.5rem;
-    background-color: #342383;
-    position: fixed;
     height: 180px;
-    bottom: 0px;
-    margin-bottom: 0px;
   }
 
   .totalFooter {
     height: 110px;
-    bottom: 10px;
     margin-bottom: 160px;
   }
 }
@@ -318,96 +210,33 @@ body {
 /*Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .todo-list {
-    background: #e8e8e8;
-    border-radius: 4px;
-    max-width: 800px;
-    padding: 5px;
-
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 130px;
-  }
-
-  .header {
-    position: center;
-    color: white;
-    text-align: center;
-    width: 100%;
-    background-color: #342383;
+    max-width: 500px;
   }
 }
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
   .todo-list {
-    background: #e8e8e8;
-    border-radius: 4px;
     max-width: 600px;
-    padding: 5px;
-
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 130px;
   }
+
   .header {
-    position: center;
-    color: white;
-    text-align: center;
-    width: 100%;
     bottom: 0;
-    background-color: #342383;
   }
 }
 
 /* Large devices (desktops, 992px and up)*/
 @media only screen and (min-width: 992px) {
-  .todo-list {
-    background: #e8e8e8;
-    border-radius: 4px;
-    max-width: 800px;
-    padding: 5px;
-
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 130px;
-  }
-
-  .listarea {
-    min-height: 90vh;
-  }
   .header {
-    position: center;
-    color: white;
-    text-align: center;
-    width: 100%;
-    background-color: #342383;
-
-    padding-top: 3vw;
     padding-bottom: 12vh;
-    bottom: 0;
   }
 
   .todo {
-    align-items: center;
-    background: #fff;
-    border-radius: 3px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
-    display: flex;
     font-size: 22px;
-    justify-content: space-between;
-    margin-bottom: 6px;
-    padding: 3px 10px;
   }
 
   .todo-list {
-    background: #e8e8e8;
-    border-radius: 4px;
     max-width: 800px;
-    padding: 5px;
-
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 130px;
   }
 
   .tabButton {
@@ -417,11 +246,8 @@ body {
 
   #addListButton {
     padding: 40px;
-    display: block;
     height: 120px;
     width: 120px;
-    border-radius: 50%;
-    border: 1px solid black;
   }
 
   .todoInput {
@@ -430,48 +256,13 @@ body {
   }
 
   .totalFooter {
-    color: white;
-    text-align: center;
-    width: 100%;
-    position: fixed;
     height: 210px;
     bottom: 10px;
     margin-bottom: 160px;
   }
 
-  .addList {
-    position: right;
-    display: inline-block;
-    margin-left: 75%;
-    height: 210px;
-    margin-bottom: 10px;
-    align-items: right;
-    min-height: 40vh;
-  }
-
   .footer {
-    color: white;
-    text-align: center;
-    width: 100%;
-    height: 2.5rem;
-    background-color: #342383;
-    position: fixed;
     height: 210px;
-    bottom: 0px;
-  }
-
-  .tabs {
-    background-color: #342383;
-    position: center;
-    color: white;
-    text-align: center;
-  }
-
-  .bottomFooter {
-    margin-top: 10px;
-    background-color: #342383;
-    height: 3.5rem;
-    padding-bottom: 100px;
   }
 
   .taskNumbers {
