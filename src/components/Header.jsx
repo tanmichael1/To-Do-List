@@ -34,11 +34,10 @@ function Header() {
   return (
     <div className="header">
       <h1>To-do List</h1>
-
       <hr />
       <h2>
-        {day} {date}
-        {ordinal} of {month}{" "}
+        {day} the {date}
+        {ordinal} of {month}
       </h2>
     </div>
   );

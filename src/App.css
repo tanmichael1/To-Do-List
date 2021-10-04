@@ -49,11 +49,21 @@ body {
 /* About */
 
 .about {
+  min-height: 40vh;
   align-items: center;
   position: center;
   text-align: center;
-  height: 100vh;
-  background: #344991;
+}
+
+.aboutMain {
+  background-color: #209cee;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
+.aboutFooter {
+  min-height: 55vh;
+  background-color: #342383;
 }
 
 /* Header */
@@ -135,6 +145,10 @@ body {
     width: 61%;
   }
 
+  .addList {
+    margin-bottom: 100px;
+  }
+
   .tabButton {
     margin-bottom: 10px;
     font-size: 10px;
@@ -146,13 +160,13 @@ body {
 
   .footer {
     height: 260px;
-    margin-bottom: 0;
+    margin-bottom: 0px;
   }
 
   .totalFooter {
     height: 0px;
     bottom: 10px;
-    margin-bottom: 330px;
+    margin-bottom: 350px;
   }
 
   .tabsHeader {
@@ -167,6 +181,10 @@ body {
 
   .tabButton {
     font-size: 15px;
+  }
+
+  .filterText {
+    font-size: 16px;
   }
 }
 
@@ -197,13 +215,22 @@ body {
     margin-bottom: 10px;
   }
 
+  .tabsHeader {
+    font-size: 30px;
+  }
+
+  .filterText {
+    font-size: 18px;
+  }
+
   .footer {
     height: 180px;
+    margin-bottom: 15px;
   }
 
   .totalFooter {
     height: 110px;
-    margin-bottom: 160px;
+    margin-bottom: 170px;
   }
 }
 
@@ -211,6 +238,14 @@ body {
 @media (min-width: 576px) {
   .todo-list {
     max-width: 80%;
+  }
+
+  .tabsHeader {
+    font-size: 34px;
+  }
+
+  .filterText {
+    font-size: 18px;
   }
 }
 
@@ -271,6 +306,10 @@ body {
 
   .tabsHeader {
     font-size: 40px;
+  }
+
+  .filterText {
+    font-size: 18px;
   }
 }
 

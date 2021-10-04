@@ -6,11 +6,9 @@ import Tabs from "./Tabs";
 function Footer({ addList, changeFilter, filter }) {
   return (
     <div className="totalFooter">
-      {" "}
       <AddNewList addList={addList} />
       <div className="footer">
         <Tabs changeFilter={changeFilter} filter={filter} />
-
         <hr />
         <div className="bottomFooter">
           <NavLink

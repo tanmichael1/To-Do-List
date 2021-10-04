@@ -31,7 +31,7 @@ function Tabs({ changeFilter, filter }) {
           Completed
         </button>
       </div>
-      <p> Current filter: {filter}</p>
+      <p className="filterText"> Current filter: {filter}</p>
     </div>
   );
 }

@@ -12,15 +12,15 @@ function TodoLists() {
       title: "To-doList",
       todos: [
         {
-          text: "Learn about React",
+          text: "Create to-do list",
           isCompleted: false,
         },
         {
-          text: "Meet friend for lunch",
+          text: "Add items to to-do list",
           isCompleted: false,
         },
         {
-          text: "Build really cool todo app",
+          text: "Create another to-do list",
           isCompleted: false,
         },
       ],
@@ -104,7 +104,6 @@ function TodoLists() {
     let listTitle = prompt("What would you change the list name to?");
     if (listTitle) {
       newTodos[listIndex].title = listTitle;
-
       setTodosList(newTodos);
     }
   }
@@ -112,7 +111,7 @@ function TodoLists() {
   function deleteList(listIndex) {
     const newTodos = [...todosList];
     let deleteConfirmation = window.confirm(
-      "Are you sure you want to remove this list of notes?"
+      "Are you sure you want to remove this list?"
     );
     if (deleteConfirmation) {
       newTodos.splice(listIndex, 1);

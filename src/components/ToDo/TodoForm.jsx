@@ -23,7 +23,6 @@ function TodoForm({ addTodo, listIndex }) {
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-        {"  "}
         <button
           className="todoButton"
           style={{ color: "white", backgroundColor: "green" }}
